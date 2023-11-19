@@ -1,0 +1,8 @@
+@startuml SDNewMovie
+":MovieWindow" -> ":MovieViewModel" : AddDefaultMovie
+":MovieViewModel" --> ":Movie" ** : create(title, durationInMinutes, genre)
+":MovieViewModel" --> ":MovieRepository" : create(movie)
+":MovieRepository" --> ":DataBase" : Add movie to database
+":MovieViewModel" -> ":MoviesVM" : Add(movie) 
+":MoviesVM" --> ":MovieWindow" : Show movie in list
+@enduml

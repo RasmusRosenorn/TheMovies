@@ -1,0 +1,28 @@
+@startuml ERD
+class Movie{
+    Title
+    Duration In Minutes
+    Genre
+    Director
+    Premiere Date
+    }
+class Cinema{
+    City    
+    Open
+    Close
+    }
+class Screen{
+    Screen Number
+    Number of Seats
+    }
+class Show{
+    Movie
+    Start Time and Date
+    Duration in Minutes
+    }
+    
+Cinema "1" -- "1..*" Screen
+Cinema "0..*" -- "0..*" Movie
+Screen "1" -- "0..*" Show
+
+@enduml

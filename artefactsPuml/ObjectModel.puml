@@ -1,0 +1,17 @@
+@startuml Object Model
+object Movie1 {
+    The Wolf Of Wall Street
+    180
+    Comedy
+}
+object Movie2 {
+    Mammoth
+    125
+    Drama
+}
+object Movie3 {
+    The King of Staten Island
+    136
+    Comedy
+}
+@enduml

@@ -1,0 +1,14 @@
+﻿<Window x:Class="theMovies.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:theMovies"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button Content="See Current Movies" Command="{Binding GoToMoviesCmd}" CommandParameter="{Binding}"  HorizontalAlignment="Left" Margin="319,360,0,0" Padding="5, 2" VerticalAlignment="Top" Height="34" Width="177"/>
+
+
+    </Grid>
+</Window>

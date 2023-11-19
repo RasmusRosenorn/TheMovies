@@ -1,0 +1,55 @@
+@startuml SDNewMovie
+package Model {
+    class Movie {
+        + Title : string
+        + DurationInMinutes : int
+        + Genre : string
+    }
+    class MovieRepository{
+        + Create(movie : Movie)
+        + Read(title : string) : string
+        + Update(ID : int, newTitle : string,
+        newDurationInMinutes : int, newGenre : string)
+        + Delete(ID : int)
+        + GetAll() : List<Movie>
+    }
+    class SqlCon{
+        + <<static>> ConnectionString : string
+    }
+    Movie "*" -- "0..*" MovieRepository
+    SqlCon "1" -- "1..*" MovieRepository
+}
+
+package ViewModel {
+    class MainViewModel{
+    }
+    class MovieViewModel{
+        - movieRepository : MovieRepository
+        + MoviesVM : ObservableCollection<Movie>
+        + SelectedMovie : Movie
+        + GoToMoviesCmd : ICommand
+        + NewMovieCmd : ICommand
+        + DeleteMovieCmd : ICommand
+        + PropertyChanged : PropertyChangedEventHandler
+        + MovieViewModel()
+        + AddDefaultMovie()
+        + DeleteSelectedMovie()
+        + UpdateSelectedMovie()
+        + OnPropertyChanged(propertyName : string)
+    }
+    MovieViewModel "1" -- "1" MovieRepository
+    MovieViewModel "1" -- "0..*" Movie
+}
+package View {
+    class MainWindow{
+        - mvm : MainViewModel
+        + MainWindow()
+    }
+    class Movies{
+        - movievm : MovieViewModel
+        + Movies()
+    }
+    Movies -- MovieViewModel
+    MainWindow -- MainViewModel
+}
+@enduml

@@ -1,0 +1,41 @@
+@startuml DatabaseModel
+!define table(x) class x << (T,#FFAAAA) >>
+
+hide stereotypes
+table(MOVIE){
+    <u><<PK>> MovieID : int</u>
+    Title : NVarChar(100)
+    DurationInMinutes : Int
+    Genre : NVarChar(50)
+    Director : NVarChar(50)
+    PremiereDate : DateTime2
+    --
+}
+table(CINEMA){
+    <u><<PK>> CinemaID : Int</u>
+    City : NVarChar(50)
+    OpeningTime : Time
+    ClosingTime : Time
+    --
+    }
+table(SCREEN){
+    <u><<PK>> ScreenID : Int</u>
+    NumberOfSeats : Int
+    <i><<FK>> CinemaID : Int</i>
+    --
+    }
+table(SHOW){
+    <u><<PK>> ShowID : Int</u>
+    StartTimeAndDate : DateTime2
+    DurationInMinutes : Int
+    <i><<FK>> MovieID : Int </i>
+    <i><<FK>> ScreenID : Int </i>
+    --
+}
+SHOW "*" -- "1" SCREEN
+SHOW "*" -- "1" MOVIE
+CINEMA "1" -- "*" SCREEN
+
+
+
+@enduml
